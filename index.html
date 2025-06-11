@@ -57,12 +57,26 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const username = document.getElementById('username').value;
-    localStorage.setItem('username', username);
-    window.location.href = 'project.html';
-});
+        <script>
+    window.onload = function() {
+        const username = localStorage.getItem('username');
+        if (username) {
+            window.location.href = 'project.html';
+        }
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+
+        if (username.trim() !== "") {
+            localStorage.setItem('username', username);
+            window.location.href = 'project.html';
+        } else {
+            alert('Please enter a valid username.');
+        }
+    });
+</script>
 
     </script>
 </body>
